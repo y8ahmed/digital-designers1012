@@ -3,7 +3,7 @@
 Team Name: Digital Designers
 
 Team Member:
-Yusuf Ahmed, y8ahmed@my.yorku.ca, Lecture A, Lab 01
+Yusuf Ahmed, y8ahmed@my.yorku.ca, Lecture A, Lab 01 <br />
 Harib Shahbaz, harib327@my.yorku.ca Lecture A, Lab 01
 
 Project Title: Rock, Paper, and Scissors
