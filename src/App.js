@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link 
+} from 'react-router-dom';
 import './App.css';
+import PvP from './components/PvP.js';
+import PvE from './components/PvE.js';
 
-function App() {
-  let [type, setType] = useState(null)
-  let [level, setLevel] = useState(null)
-  
+const Main = ({type, setType, level, setLevel}) => {
   return (
     <div className="App">
       <section> 
@@ -22,8 +27,14 @@ function App() {
               <h3>Choose Difficulty</h3>
               <button onClick={() => setLevel(0)}>Easy</button>
               <button onClick={() => setLevel(1)}>Hard</button>
-              <br /><br />
-              <button> Start Game (Player vs Computer)</button>
+              {level !== null
+                ? <>
+                  <br /><br />
+                  <Link to={"/pve"}><h3>Start Game (Player vs Computer)</h3></Link>
+                  <p>{level}</p>
+                </>
+                : null
+              } 
             </> 
             : null
           }
@@ -31,7 +42,7 @@ function App() {
           {type == 0
             ? <>
             <br /><br />
-            <button> Start Game (Player vs Player)</button>            
+            <Link to={"/pvp"}><h3>Start Game (Player vs Player)</h3></Link>       
             </> 
             : null
           }
@@ -43,6 +54,23 @@ function App() {
           <h4>____________________________________________________</h4>
       </section>
     </div>
+  );
+}
+
+function App() {
+  const [myChoice, setMyChoice] = useState("");
+  const [score, setScore] = useState(0);
+  let [type, setType] = useState(null)
+  let [level, setLevel] = useState(null)
+
+  return (
+    <Router>
+      <Routes>
+          <Route exact path='/' element={<Main type={type} setType={setType} level={level} setLevel={setLevel} />} />
+          <Route exact path='/pvp' element={<PvP />} />
+          <Route exact path='/pve' element={<PvE myChoice={myChoice} score={score} setScore={setScore} level={level} />} />
+      </Routes>
+    </Router>
   );
 }
 
