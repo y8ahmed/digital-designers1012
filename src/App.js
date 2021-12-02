@@ -17,7 +17,7 @@ const Main = ({type, setType, level, setLevel}) => {
       </section>
       <section> 
         
-        <h3>Choose game mode (Player vs Player or Computer)</h3>
+        <h3>Choose game mode (Player vs Player or Player vs Computer)</h3>
 
           <button onClick={() => setType(0)}>Player vs Player</button>
           <button onClick={() => setType(1)}>Player vs Computer</button>
