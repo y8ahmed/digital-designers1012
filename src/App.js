@@ -13,7 +13,7 @@ const Main = ({type, setType, level, setLevel}) => {
   return (
     <div className="App">
       <section> 
-        <h2> Rock Paper Siccors By Yusuf Ahmed and Harib Bin Shahbaz</h2>
+        <h2> Rock Paper Scissors By Yusuf Ahmed and Harib Bin Shahbaz</h2>
       </section>
       <section> 
         
