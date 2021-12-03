@@ -16,6 +16,7 @@ The additional features we included in our project are Player vs Player mode, ea
 
 * A page with the game's information and rules will be presented to the user.
 
+
 * The user will be presented with two different game modes. Player vs CPU, or Player vs Player.
 
 * If the user chooses Player vs CPU, they will be prompted to choose between two difficulty levels, easy or hard.
@@ -23,6 +24,19 @@ The additional features we included in our project are Player vs Player mode, ea
 * In easy mode, the CPU will make inferences on the player's last move, and will counter with a move in the player's favour. 
 
 * In hard mode, the CPU will make inferences on the player's last move, and will counter with a move in opposition of the player's favour. 
+
+*  If the player chooses Player Vs Player, they will also
+be presented with two different game modes. They will
+choose between normal Player vs Player, or choose a 
+special game mode called, "We Feeling Lucky"
+
+* The normal Player vs Player game mode, will continue 
+like any, where each Player gets to choose between
+rock, paper or sciccors. For the special game mode, 
+"We Feeling Lucky", each player will be given a 
+random choice between rock, paper, or sciccors, 
+making it a randomly generated player vs player game
+mode. 
 
 * After the user makes their choice, the game starts.
 

@@ -39,12 +39,9 @@ const Main = ({ type, setType, level, setLevel, gameMode, setGameMode }) => {
         {type === 0 ? (
           <>
             <h3>Choose Game Mode</h3>
-            <button onClick={() => setGameMode(0)}>Player vs Player</button>
-            <button onClick={() => setGameMode(1)}>We Feeling Lucky</button>
-            {gameMode !== null ? (
-              <>
-                <br />
-                <br />
+            
+            
+          
 
                 <Link to={"/pvp"}>
                   <h3>Start Game (Player vs Player)</h3>
@@ -52,8 +49,8 @@ const Main = ({ type, setType, level, setLevel, gameMode, setGameMode }) => {
                 <Link to={"/lucky"}>
                   <h3>Start Game (We Feeling Lucky)</h3>
                 </Link>
-              </>
-            ) : null}
+           
+         
           </>
         ) : null}
       </section>
@@ -75,6 +72,7 @@ function App() {
   let [type, setType] = useState(null);
   let [level, setLevel] = useState(null);
   let [gameMode, setGameMode] = useState(null);
+  
 
   return (
     <Router>
