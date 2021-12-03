@@ -8,6 +8,10 @@ export default function PvP({ myChoice, level }) {
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
   const [round, setRound] = useState("");
+  let [selected1, setSelected] = useState(0);
+  let [selected2, setSelected2] = useState(0);
+  let [counter, setCounter] = useState(0);
+
   // const [score, setScore] = useState({
   //   player1Score: 0,
   //  player2Score: 0
@@ -16,64 +20,73 @@ export default function PvP({ myChoice, level }) {
   console.log(level);
 
   const result = useMemo(() => {
-    if(player1Score !== 3 && player2Score !== 3){
-      if (player1 === "rock" && player2 === "scissors") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      }
-       else if (player1 === "rock" && player2 === "paper") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 2 Won";
-      } else if (player1 === "scissors" && player2 === "paper") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      } else if (player1 === "scissors" && player2 === "rock") {
-        setPlayer2Score(player2Score + 1);
-        return "Player 2 Won";
-      } else if (player1 === "paper" && player2 === "rock") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      } else if (player1 === "paper" && player2 === "scissors") {
-        setPlayer2Score(player2Score + 1);
-        return "Player 2 Won";
-      } else if ((player1 === player2) && (player1 !== '') &&(player2 !== '')){
-        return "It was a tie.";
-      }
+    setSelected(selected1++);
+    setSelected2(selected2++);
 
+    if (selected1 !== counter && selected2 !== counter) {
+      if (player1Score !== 3 && player2Score !== 3) {
+        if (player1 === "rock" && player2 === "scissors") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "rock" && player2 === "paper") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === "scissors" && player2 === "paper") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "scissors" && player2 === "rock") {
+          setPlayer2Score(player2Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === "paper" && player2 === "rock") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "paper" && player2 === "scissors") {
+          setPlayer2Score(player2Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === player2 && player1 !== "" && player2 !== "") {
+          return "It was a tie.";
+        }
+      } else {
+        return "Game Over.";
+      }
     }
-    else{
-      return('Game Over.');
-    }
-    }, [player1, player2]);
+  }, [player1, player2]);
 
   const rounds = useMemo(() => {
-    if(player1Score !== 3 && player2Score !== 3){
-      if(player1Score > player2Score){
-        setRound(`Player 1 is Current in the lead with ${player1Score} wins. Player 1 has ${3-player1Score} rounds left to win!`);
+    if (player1Score !== 3 && player2Score !== 3) {
+      if (player1Score > player2Score) {
+        setRound(
+          `Player 1 is Current in the lead with ${player1Score} wins. Player 1 has ${
+            3 - player1Score
+          } rounds left to win!`
+        );
+      } else if (player2Score > player1Score) {
+        setRound(
+          `Player 2 is Current in the lead with ${player2Score} wins. Player 2 has ${
+            3 - player2Score
+          } rounds left to win!`
+        );
+      } else if (
+        player1Score === player2Score &&
+        player1 !== "" &&
+        player2 !== ""
+      ) {
+        setRound("Player 1 and Player 2 are currently tied.");
       }
-      else if(player2Score > player1Score){
-        setRound(`Player 2 is Current in the lead with ${player2Score} wins. Player 2 has ${3-player2Score} rounds left to win!`);
-      }
-      else if((player1Score === player2Score) && (player1 !== '') &&(player2 !== '')){
-        setRound('Player 1 and Player 2 are currently tied.')
+    } else {
+      if (player1Score === 3) {
+        setRound("Player 1 has won the game.");
+      } else if (player2Score === 3) {
+        setRound("Player 2 has won the game");
       }
     }
-    else{
-      if(player1Score === 3){
-        setRound('Player 1 has won the game.')
-
-      }
-      else if(player2Score === 3){
-        setRound('Player 2 has won the game');
-      }
-     
-
-    }
-   
-      
-
-    
-  },[player1Score,player2Score]);
+  }, [player1Score, player2Score]);
 
   const choice1 = useMemo(() => {
     if (
@@ -100,10 +113,8 @@ export default function PvP({ myChoice, level }) {
   const playAgain = () => {
     setPlayer1("");
     setPlayer2("");
-    //setPlayer1Score(0);
-    //setPlayer2Score(0)
-    //setRound('');
-   
+    setCounter(0)
+    
   };
 
   return (
@@ -120,7 +131,6 @@ export default function PvP({ myChoice, level }) {
       </div>
 
       <p>Player 1 Selected: {choice1}</p>
-      <p>{choice1}</p>
 
       <div>
         <button onClick={() => setPlayer2("rock")}>rock</button>

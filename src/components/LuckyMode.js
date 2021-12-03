@@ -9,66 +9,71 @@ export default function Lucky({ myChoice, level }) {
   const [player2, setPlayer2] = useState("");
   const [round, setRound] = useState("");
 
+  let [selected1, setSelected] = useState(0);
+  let [selected2, setSelected2] = useState(0);
+  let [counter, setCounter] = useState(0);
+
   const feelingLucky1 = () => {
-    let random = Math.floor(Math.random() * 3) + 1
-    if (random === 1){
-      setPlayer1('rock');
+    let random = Math.floor(Math.random() * 3) + 1;
+    if (random === 1) {
+      setPlayer1("rock");
+    } else if (random === 2) {
+      setPlayer1("paper");
+    } else if (random === 3) {
+      setPlayer1("scissors");
     }
-    else if(random === 2){
-      setPlayer1('paper');
-    }
-    else if(random === 3){
-      setPlayer1('scissors')
-    }
-    
-  }
+  };
 
-  const feelingLucky2 = () =>{
-    let random = Math.floor(Math.random() * 3) + 1
-    if (random === 3){
-      setPlayer2('rock');
+  const feelingLucky2 = () => {
+    let random = Math.floor(Math.random() * 3) + 1;
+    if (random === 3) {
+      setPlayer2("rock");
+    } else if (random === 2) {
+      setPlayer2("paper");
+    } else if (random === 1) {
+      setPlayer2("scissors");
     }
-    else if(random === 2){
-      setPlayer2('paper');
-    }
-    else if (random === 1){
-      setPlayer2('scissors')
-    }
-    
-  }
+  };
 
-  
-  console.log(player1)
-  console.log(player2)
-
-
-
+  console.log(player1);
+  console.log(player2);
 
   const result = useMemo(() => {
-    if (player1Score !== 3 && player2Score !== 3) {
-      if (player1 === "rock" && player2 === "scissors") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      } else if (player1 === "rock" && player2 === "paper") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 2 Won";
-      } else if (player1 === "scissors" && player2 === "paper") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      } else if (player1 === "scissors" && player2 === "rock") {
-        setPlayer2Score(player2Score + 1);
-        return "Player 2 Won";
-      } else if (player1 === "paper" && player2 === "rock") {
-        setPlayer1Score(player1Score + 1);
-        return "Player 1 Won";
-      } else if (player1 === "paper" && player2 === "scissors") {
-        setPlayer2Score(player2Score + 1);
-        return "Player 2 Won";
-      } else if (player1 === player2 && player1 !== "" && player2 !== "") {
-        return "It was a tie.";
+    setSelected(selected1++);
+    setSelected2(selected2++);
+
+    if (selected1 !== counter && selected2 !== counter) {
+      if (player1Score !== 3 && player2Score !== 3) {
+        if (player1 === "rock" && player2 === "scissors") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "rock" && player2 === "paper") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === "scissors" && player2 === "paper") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "scissors" && player2 === "rock") {
+          setPlayer2Score(player2Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === "paper" && player2 === "rock") {
+          setPlayer1Score(player1Score + 1);
+          setCounter(counter + 1);
+          return "Player 1 Won";
+        } else if (player1 === "paper" && player2 === "scissors") {
+          setPlayer2Score(player2Score + 1);
+          setCounter(counter + 1);
+          return "Player 2 Won";
+        } else if (player1 === player2 && player1 !== "" && player2 !== "") {
+          return "It was a tie.";
+        }
+      } else {
+        return "Game Over.";
       }
-    } else {
-      return "Game Over.";
     }
   }, [player1, player2]);
 
@@ -127,9 +132,8 @@ export default function Lucky({ myChoice, level }) {
   const playAgain = () => {
     setPlayer1("");
     setPlayer2("");
-    //setPlayer1Score(0);
-    //setPlayer2Score(0)
-    //setRound('');
+    setCounter(0)
+ 
   };
 
   return (
@@ -141,11 +145,9 @@ export default function Lucky({ myChoice, level }) {
           {}
         </h1>
         <button onClick={feelingLucky1}>Player 1: Test your Luck</button>
-
       </div>
 
       <p>Player 1 Selected: {choice1}</p>
-      
 
       <div>
         <button onClick={feelingLucky2}>Player 2: Test Your Luck</button>
@@ -159,3 +161,4 @@ export default function Lucky({ myChoice, level }) {
     </div>
   );
 }
+
