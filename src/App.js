@@ -4,14 +4,20 @@ import "./App.css";
 import PvP from "./components/PvP.js";
 import PvE from "./components/PvE.js";
 import Lucky from "./components/LuckyMode.js";
+import Secret from "./components/Secret.js"
+
+
 
 const Main = ({ type, setType, level, setLevel, gameMode, setGameMode }) => {
   return (
+    
     <div className="App">
       <section>
         <h2> Rock Paper Siccors By Yusuf Ahmed and Harib Bin Shahbaz</h2>
       </section>
       <section>
+       
+     
         <h3>Choose game mode (Player vs Player or Computer)</h3>
 
         <button onClick={() => setType(0)}>Player vs Player</button>
@@ -39,18 +45,18 @@ const Main = ({ type, setType, level, setLevel, gameMode, setGameMode }) => {
         {type === 0 ? (
           <>
             <h3>Choose Game Mode</h3>
-            
-            
-          
 
-                <Link to={"/pvp"}>
-                  <h3>Start Game (Player vs Player)</h3>
-                </Link>
-                <Link to={"/lucky"}>
-                  <h3>Start Game (We Feeling Lucky)</h3>
-                </Link>
-           
-         
+            <Link to={"/pvp"}>
+              <h3>Start Game (Player vs Player)</h3>
+            </Link>
+            <Link to={"/lucky"}>
+              <h3>Start Game (We Feeling Lucky)</h3>
+            </Link>
+            <Link to={"/secret"}>
+               <h3>Secret Game Mode</h3>
+            </Link>
+
+        
           </>
         ) : null}
       </section>
@@ -72,7 +78,6 @@ function App() {
   let [type, setType] = useState(null);
   let [level, setLevel] = useState(null);
   let [gameMode, setGameMode] = useState(null);
-  
 
   return (
     <Router>
@@ -93,6 +98,7 @@ function App() {
         />
         <Route exact path="/pvp" element={<PvP />} />
         <Route exact path="/lucky" element={<Lucky />} />
+        <Route exact path="/secret" element={<Secret />} />
         <Route
           exact
           path="/pve"

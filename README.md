@@ -40,6 +40,11 @@ mode.
 
 * After the user makes their choice, the game starts.
 
+* There is a secret game mode, for Player vs Player.
+In this game mode, you compete against your friend, but the option you select will be swapped with the other player! 
+
+* Note, each game mode goes to 3 rounds each.
+
 ### Game:
 
 * The player will be prompted to pick between Rock, Paper or Scissors, and will click on their respective symbols to finalize their choice. 
