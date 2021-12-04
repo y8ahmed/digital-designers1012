@@ -1,65 +1,89 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Box } from '@chakra-ui/react'
+import { Box, Text, Button } from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
+import { Stack, HStack, VStack, StackDivider } from '@chakra-ui/react'
 
 export default function Main({ type, setType, level, setLevel, gameMode, setGameMode }) {
   return (
     <div className="App">
-      <section>
-        <h2> Rock Paper Siccors By Yusuf Ahmed and Harib Bin Shahbaz</h2>
-      </section>
-      <section>
-       
-     
-        <h3>Choose game mode (Player vs Player or Computer)</h3>
+        <Center h='100vh'>
+            <VStack
+                divider={<StackDivider borderColor='gray.200' />}
+                spacing={4}
+                align='stretch'
+                >
+                    <section>
+                        <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                            <Text fontSize='xl'>Rock Paper Siccors</Text>
+                            <Text fontSize='md'>By Yusuf Ahmed and Harib Bin Shahbaz</Text>
+                        </Box>            
+                    </section>
 
-        <button onClick={() => setType(0)}>Player vs Player</button>
-        <button onClick={() => setType(1)}>Player vs Computer</button>
+                    <section>
+                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                        <VStack>
+                            <Text fontSize='md' pb="2%" >Choose game mode (Player vs Player or Computer)</Text>
 
-        {type === 1 ? (
-          <>
-            <h3>Choose Game Mode</h3>
-            <button onClick={() => setLevel(0)}>Easy</button>
-            <button onClick={() => setLevel(1)}>Hard</button>
-            {level !== null ? (
-              <>
-                <br />
-                <br />
+                            <Stack spacing={4} direction='row' align='center'>
+                                <Button onClick={() => setType(0)}>Player vs Player</Button>
+                                <Button onClick={() => setType(1)}>Player vs Computer</Button>
+                            </Stack>
 
-                <Link to={"/pve"}>
-                  <h3>Start Game (Player vs Computer)</h3>
-                </Link>
-                <p>{level}</p>
-              </>
-            ) : null}
-          </>
-        ) : null}
+                            {type === 1 ? (
+                            <>
+                                <Text fontSize='sm' pb="2%" >Choose Game Mode</Text>
 
-        {type === 0 ? (
-          <>
-            <h3>Choose Game Mode</h3>
+                                <Stack spacing={4} direction='row' align='center'>
+                                    <Button onClick={() => setLevel(0)}>Easy</Button>
+                                    <Button onClick={() => setLevel(1)}>Hard</Button>
+                                </Stack>
+                                {level !== null ? (
+                                <>
+                                    <Link to={"/pve"}>
+                                        <Button colorScheme='teal' size='sm' >Start Game (Player vs Computer)</Button>
+                                    </Link>
+                                </>
+                                ) : null}
+                            </>
+                            ) : null}
 
-            <Link to={"/pvp"}>
-              <h3>Start Game (Player vs Player)</h3>
-            </Link>
-            <Link to={"/lucky"}>
-              <h3>Start Game (We Feeling Lucky)</h3>
-            </Link>
-            <Link to={"/secret"}>
-               <h3>Secret Game Mode</h3>
-            </Link>
+                            {type === 0 ? (
+                            <>
+                                <Text fontSize='sm' pb="2%" >Choose Game Mode</Text>
+                                
+                                <Link to={"/pvp"}>
+                                    <Button colorScheme='teal' size='sm' >Start Game (Player vs Player)</Button>   
+                                </Link>
 
-        
-          </>
-        ) : null}
-      </section>
-      <section>
-        <h3>Game Information</h3>
-        <h4>____________________________________________________</h4>
-        <h3>Game rules</h3>
-        <h4>____________________________________________________</h4>
-      </section>
-    </div>
+                                <Link to={"/lucky"}>
+                                    <Button colorScheme='teal' size='sm' >Start Game (We Feeling Lucky)</Button>
+                                </Link>
+
+                                <Link to={"/secret"}>
+                                    <Button colorScheme='teal' size='sm' >Secret Game Mode)</Button>
+                                </Link> 
+                            </>
+                            ) : null} 
+                        </VStack>           
+                    </Box>  
+                </section>
+                <section>
+                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                        <h3>Game Information:</h3>
+                        <h4>Rock paper scissors is a hand game, usually played between two people, which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are "rock" (a closed fist), "paper" (a flat hand), and "scissors" (hand forming a V).</h4>
+                    </Box>
+                </section>
+                <section>
+                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                        <h3>Game rules:</h3>
+                        <h4>Rules: Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock, flat hand for paper, or their index and middle finger for scissors. Rock crushes scissors, scissors cut paper, and paper covers rock.</h4>
+                    </Box>
+                </section>
+            </VStack>
+        </Center>
+    </div> 
+
   );
 };
