@@ -144,7 +144,7 @@ export default function PvP({ myChoice, level }) {
       <p>Player 2 Selected: {choice2}</p>
       <div>{result}</div>
       <p>{round}</p>
-      <p>Please click play again to start a new round.</p>
+      <p>Please click next round to start a new round.</p>
       <button onClick={nextRound}>Next Round</button>
       <button onClick={reset}>Reset Game.</button>
     </div>

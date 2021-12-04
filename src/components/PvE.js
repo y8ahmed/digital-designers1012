@@ -133,7 +133,7 @@ export default function PvE({ myChoice, level }) {
       <p>computer's choice: {computerSelected}</p>
       <div>{result}</div>
       <p>{rounds}</p>
-      <p>Please click play again to start a new round.</p>
+      <p>Please click next round to start a new round.</p>
       <button onClick={nextRound}>Next Round</button>
       <button onClick={reset}>Reset Game.</button>
     </div>
