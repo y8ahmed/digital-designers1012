@@ -9,21 +9,17 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
   return (
     <div className="App">
         <Center h='100vh'>
-            <VStack
-                divider={<StackDivider borderColor='gray.200' />}
-                spacing={4}
-                align='stretch'
-                >
+            <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4} align='stretch'>
                     <section>
-                        <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                        <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
                             <Text fontSize='xl'>Rock Paper Siccors</Text>
                             <Text fontSize='md'>By Yusuf Ahmed and Harib Bin Shahbaz</Text>
                         </Box>            
                     </section>
 
                     <section>
-                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
-                        <VStack>
+                    <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
+                        <VStack spacing={4} align='center'>
                             <Text fontSize='md' pb="2%" >Choose game mode (Player vs Player or Computer)</Text>
 
                             <Stack spacing={4} direction='row' align='center'>
@@ -33,7 +29,7 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
 
                             {type === 1 ? (
                             <>
-                                <Text fontSize='sm' pb="2%" >Choose Game Mode</Text>
+                                <Text fontSize='md' pb="2%" >Choose Game Mode:</Text>
 
                                 <Stack spacing={4} direction='row' align='center'>
                                     <Button onClick={() => setLevel(0)}>Easy</Button>
@@ -42,7 +38,7 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
                                 {level !== null ? (
                                 <>
                                     <Link to={"/pve"}>
-                                        <Button colorScheme='teal' size='sm' >Start Game (Player vs Computer)</Button>
+                                        <Button mt="5%" colorScheme='teal' size='sm' >Start Game (Player vs Computer)</Button>
                                     </Link>
                                 </>
                                 ) : null}
@@ -51,8 +47,8 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
 
                             {type === 0 ? (
                             <>
-                                <Text fontSize='sm' pb="2%" >Choose Game Mode</Text>
-                                
+                                <Text fontSize='sm' pb="2%" >Choose Game Mode:</Text>
+
                                 <Link to={"/pvp"}>
                                     <Button colorScheme='teal' size='sm' >Start Game (Player vs Player)</Button>   
                                 </Link>
@@ -70,13 +66,13 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
                     </Box>  
                 </section>
                 <section>
-                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                    <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
                         <h3>Game Information:</h3>
                         <h4>Rock paper scissors is a hand game, usually played between two people, which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are "rock" (a closed fist), "paper" (a flat hand), and "scissors" (hand forming a V).</h4>
                     </Box>
                 </section>
                 <section>
-                    <Box p={3} m={3} border="2px" borderColor="black.200" borderRadius="5" w='xl'>
+                    <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
                         <h3>Game rules:</h3>
                         <h4>Rules: Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock, flat hand for paper, or their index and middle finger for scissors. Rock crushes scissors, scissors cut paper, and paper covers rock.</h4>
                     </Box>
