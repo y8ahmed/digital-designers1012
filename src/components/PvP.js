@@ -1,55 +1,77 @@
 import React, { useMemo, useState } from "react";
-import axios from "axios";
+
+import Paper from "../hands/Paper";
+import Rock from "../hands/Rock";
+import Scissor from "../hands/Scissor";
+
+import { 
+  Box, Text, 
+  Button, Center,
+  Flex, HStack, 
+  VStack, StackDivider
+} from '@chakra-ui/react'
 
 export default function PvP({ myChoice, level }) {
+  // scores of the players
   const [player1Score, setPlayer1Score] = useState(0);
   const [player2Score, setPlayer2Score] = useState(0);
 
+  // hands of the players
   const [player1, setPlayer1] = useState("");
   const [player2, setPlayer2] = useState("");
+
   const [round, setRound] = useState("");
+  let [gameover, setGameOver] = useState(false);
+  let [tie , setTie] = useState(0);
+
   let [selected1, setSelected] = useState(0);
   let [selected2, setSelected2] = useState(0);
-  let [counter, setCounter] = useState(0);
-
-
-
-  console.log(level);
+  let [indicator , setIndicator] = useState(0);
+  let [count, setCount] = useState(0);
 
   const result = useMemo(() => {
     setSelected(selected1++);
     setSelected2(selected2++);
 
-    if (selected1 !== counter && selected2 !== counter) {
+    if (selected1 !== indicator && selected2 !== indicator) {
       if (player1Score !== 3 && player2Score !== 3) {
         if (player1 === "rock" && player2 === "scissors") {
           setPlayer1Score(player1Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 1 Won";
         } else if (player1 === "rock" && player2 === "paper") {
           setPlayer1Score(player1Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 2 Won";
         } else if (player1 === "scissors" && player2 === "paper") {
           setPlayer1Score(player1Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 1 Won";
         } else if (player1 === "scissors" && player2 === "rock") {
           setPlayer2Score(player2Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 2 Won";
         } else if (player1 === "paper" && player2 === "rock") {
           setPlayer1Score(player1Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 1 Won";
         } else if (player1 === "paper" && player2 === "scissors") {
           setPlayer2Score(player2Score + 1);
-          setCounter(counter + 1);
+          setIndicator(indicator + 1);
+          setCount(count+1)
           return "Player 2 Won";
         } else if (player1 === player2 && player1 !== "" && player2 !== "") {
+          setTie(tie+1)
+          setCount(count+1)
           return "It was a tie.";
         }
       } else {
+        setGameOver(true)
         return "Game Over.";
       }
     }
@@ -110,7 +132,7 @@ export default function PvP({ myChoice, level }) {
   const nextRound = () => {
     setPlayer1("");
     setPlayer2("");
-    setCounter(0);
+    setIndicator(0);
   }
 
   const reset = () => {
@@ -121,32 +143,90 @@ export default function PvP({ myChoice, level }) {
   }
 
   return (
-    <div>
-      <div>
-        <h1>
-          {" "}
-          Player1 Score: {player1Score} Player2 Score: {player2Score}
-          {}
-        </h1>
-        <button onClick={() => setPlayer1("rock")}>rock</button>
-        <button onClick={() => setPlayer1("paper")}>paper</button>
-        <button onClick={() => setPlayer1("scissors")}>scissors</button>
-      </div>
 
-      <p>Player 1 Selected: {choice1}</p>
+    <Center h='100vh'>
+    <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4} align='stretch'>
+      <section>
+      <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
+          <Text fontSize='lg' align='center'>Round: {count}</Text>
+          <Text fontSize='md' align='center'>Player 1 Score: {player1Score} Player 2 Score: {player2Score} Tie: {tie}</Text>
+      </Box>   
+      </section>
+      <section>
+      <Flex>
+        <Box flex='1'>
+          <Text fontSize='lg' align='center'>Player 1</Text>
+          <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5">
+            <Box h="75" align="center">
+              { choice1 == "rock" ? (
+                  <Rock width="60" color="#319795"/>
+                ) : ( choice1 == "paper" ? (
+                    <Paper width="60" color="#319795"/>
+                  ) : ( choice1 == "scissors" ? (
+                    <Scissor width="60" color="#319795"/>
+                  ) : (
+                    null
+                  )
+                  )
+                )   
+              }
+            </Box>
+            <Box h="25%" align="center" >
+              <HStack spacing='2%' m="2" >
+                <Button onClick={() => setPlayer1("rock")}><Rock width="40" color="#319795"/></Button>
+                <Button onClick={() => setPlayer1("paper")}><Paper width="40" color="#319795"/></Button>
+                <Button onClick={() => setPlayer1("scissors")}><Scissor width="40" color="#319795"/></Button>
+              </HStack>
+            </Box>
+          </Box>
+        </Box>
+        <Box flex='1'>
+        <Text fontSize='lg' align='center'>Player 2</Text>
+          <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5">
+            <Box h="75" align="center">
+              { choice2 == "rock" ? (
+                      <Rock width="60" color="#808080"/>
+                    ) : ( choice2 == "paper" ? (
+                        <Paper width="60" color="#808080"/>
+                      ) : ( choice2 == "scissors" ? (
+                        <Scissor width="60" color="#808080"/>
+                      ) : (
+                        null
+                      )
+                      )
+                    )   
+                  }
+            </Box>
+            <HStack spacing='2%' m="2" h="25%">
+                <Button onClick={() => {setPlayer2("rock")}}><Rock width="40" color="#808080"/></Button>
+                <Button onClick={() => {setPlayer2("paper")}}><Paper width="40" color="#808080"/></Button>
+                <Button onClick={() => {setPlayer2("scissors")}}><Scissor width="40" color="#808080"/></Button>
+            </HStack>
+           </Box> 
+        </Box>
+      </Flex> 
+      <HStack justifyContent="center" spacing='2%'>
+        <Button onClick={nextRound} align="center">Next round</Button>
+      </HStack>  
+      </section>
+      <section>
+        <Text fontSize='md' textAlign="center">Remember to click 'play' after selecting Rock Paper or Scissor
+        <br />
+        then click 'Next round' to start the second after you click 'play'</Text>
+        <Text fontSize='md' textAlign="center">{rounds}</Text>
+      </section>
 
-      <div>
-        <button onClick={() => setPlayer2("rock")}>rock</button>
-        <button onClick={() => setPlayer2("paper")}>paper</button>
-        <button onClick={() => setPlayer2("scissors")}>scissors</button>
-      </div>
-
-      <p>Player 2 Selected: {choice2}</p>
-      <div>{result}</div>
-      <p>{round}</p>
-      <p>Please click next round to start a new round.</p>
-      <button onClick={nextRound}>Next Round</button>
-      <button onClick={reset}>Reset Game.</button>
-    </div>
+      <section>
+      <VStack justifyContent="center" spacing='2%'>
+        <Text fontSize='md' textAlign="center">{result}</Text>
+        {
+          gameover == true ? (
+            <Button align="center" onClick={reset}>Reset Game.</Button>
+          ) : null
+        } 
+      </VStack> 
+      </section>
+    </VStack>
+  </Center>
   );
 }
