@@ -12,7 +12,7 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
             <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4} align='stretch'>
                     <section>
                         <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
-                            <Text fontSize='xl'>Rock Paper Siccors</Text>
+                            <Text fontSize='xl'>Rock Paper Scissors</Text>
                             <Text fontSize='md'>By Yusuf Ahmed and Harib Bin Shahbaz</Text>
                         </Box>            
                     </section>
