@@ -105,15 +105,15 @@ export default function PvE({ myChoice, level }) {
   }, [score, computerScore]);
 
   const nextRound = () => {
-    setPlayer1("");
-    setPlayer2("");
+    setSelected("");
+    setComputedSelected("");
     setCounter(0);
   }
 
   const reset = () => {
     nextRound();
-    setPlayer1Score(0);
-    setPlayer2Score(0);
+    setScore(0);
+    setComputerScore(0);
     setRound('');
   }
   return (
