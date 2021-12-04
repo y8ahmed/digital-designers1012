@@ -35,9 +35,6 @@ export default function Lucky({ myChoice, level }) {
     }
   };
 
-  console.log(player1);
-  console.log(player2);
-
   const result = useMemo(() => {
     setSelected(selected1++);
     setSelected2(selected2++);
@@ -157,7 +154,7 @@ export default function Lucky({ myChoice, level }) {
       <div>{result}</div>
       <p>{round}</p>
       <p>Please click play again to start a new round.</p>
-      <button onClick={playAgain}>Play Again?</button>
+      <button onClick={playAgain}>Next Round</button>
     </div>
   );
 }

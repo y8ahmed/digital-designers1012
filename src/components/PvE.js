@@ -6,18 +6,13 @@ export default function PvE({ myChoice, level }) {
   const [computerSelected, setComputedSelected] = useState("");
 
   let [score, setScore] = useState(0);
-
   let [computerScore, setComputerScore] = useState(0);
 
   let [playerIndicator, setPlayerIndicator] = useState(0);
-
   let [computerIndicator, setComputerIndicator] = useState(0);
 
   let [counter, setCounter] = useState(0);
-
-  const [round, setRound] = useState("");
-
-  // console.log(level)
+  let [round, setRound] = useState("");
 
   const play = () => {
     // call backend and get the difficulty
@@ -132,7 +127,8 @@ export default function PvE({ myChoice, level }) {
       <p>computer's choice: {computerSelected}</p>
       <div>{result}</div>
       <p>{rounds}</p>
-      <button onClick={playAgain}>Play Again?</button>
+      <p>Please click play again to start a new round.</p>
+      <button onClick={playAgain}>Next Round</button>
     </div>
   );
 }
