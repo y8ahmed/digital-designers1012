@@ -12,10 +12,7 @@ export default function PvP({ myChoice, level }) {
   let [selected2, setSelected2] = useState(0);
   let [counter, setCounter] = useState(0);
 
-  // const [score, setScore] = useState({
-  //   player1Score: 0,
-  //  player2Score: 0
-  //});
+
 
   console.log(level);
 
@@ -110,8 +107,14 @@ export default function PvP({ myChoice, level }) {
     }
   }, [player1, player2]);
 
+  const nextRound = () => {
+    setPlayer1("");
+    setPlayer2("");
+    setCounter(0);
+  }
+
   const reset = () => {
-    playAgain();
+    nextRound();
     setPlayer1Score(0);
     setPlayer2Score(0);
     setRound('');
@@ -142,7 +145,8 @@ export default function PvP({ myChoice, level }) {
       <div>{result}</div>
       <p>{round}</p>
       <p>Please click play again to start a new round.</p>
-      <button onClick={reset}>Next Round</button>
+      <button onClick={nextRound}>Next Round</button>
+      <button onClick={reset}>Reset Game.</button>
     </div>
   );
 }

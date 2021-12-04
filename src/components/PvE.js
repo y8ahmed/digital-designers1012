@@ -104,12 +104,17 @@ export default function PvE({ myChoice, level }) {
     }
   }, [score, computerScore]);
 
-  const reset = () => {
-    playAgain();
-   setScore(0);
-    setComputerScore(0);
-    setRound('');
+  const nextRound = () => {
+    setPlayer1("");
+    setPlayer2("");
+    setCounter(0);
+  }
 
+  const reset = () => {
+    nextRound();
+    setPlayer1Score(0);
+    setPlayer2Score(0);
+    setRound('');
   }
   return (
     <div>
@@ -129,7 +134,8 @@ export default function PvE({ myChoice, level }) {
       <div>{result}</div>
       <p>{rounds}</p>
       <p>Please click play again to start a new round.</p>
-      <button onClick={reset}>Next Round</button>
+      <button onClick={nextRound}>Next Round</button>
+      <button onClick={reset}>Reset Game.</button>
     </div>
   );
 }

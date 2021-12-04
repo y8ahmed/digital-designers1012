@@ -126,8 +126,14 @@ export default function Lucky({ myChoice, level }) {
     }
   }, [player1, player2]);
 
+  const nextRound = () => {
+    setPlayer1("");
+    setPlayer2("");
+    setCounter(0);
+  }
+
   const reset = () => {
-    playAgain();
+    nextRound();
     setPlayer1Score(0);
     setPlayer2Score(0);
     setRound('');
@@ -154,7 +160,8 @@ export default function Lucky({ myChoice, level }) {
       <div>{result}</div>
       <p>{round}</p>
       <p>Please click play again to start a new round.</p>
-      <button onClick={reset}>Next Round</button>
+      <button onClick={nextRound}>Next Round</button>
+      <button onClick={reset}>Reset Game.</button>
     </div>
   );
 }
