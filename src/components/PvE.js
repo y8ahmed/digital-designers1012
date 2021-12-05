@@ -57,7 +57,7 @@ export default function PvE({ myChoice, level }) {
           setScore(score + 1);
           setIndicator(indicator  + 1);
           setCount(count+1) 
-          return "Player 1 Won";
+          return "Player Won";
         } else if (selected === "rock" && computerSelected === "paper") {
           setComputerScore(computerScore + 1);
           setIndicator(indicator  + 1);
@@ -67,7 +67,7 @@ export default function PvE({ myChoice, level }) {
           setScore(score + 1);
           setIndicator(indicator  + 1);
           setCount(count+1) 
-          return "Player 1 Won";
+          return "Player Won";
         } else if (selected === "scissors" && computerSelected === "rock") {
           setComputerScore(computerScore + 1);
           setIndicator(indicator  + 1);
@@ -77,7 +77,7 @@ export default function PvE({ myChoice, level }) {
           setScore(score + 1);
           setIndicator(indicator  + 1);
           setCount(count+1) 
-          return "Player 1 Won";
+          return "Player Won";
         } else if (selected === "paper" && computerSelected === "scissors") {
           setComputerScore(computerScore + 1);
           setIndicator(indicator  + 1);

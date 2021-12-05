@@ -29,9 +29,6 @@ export default function Secret({ myChoice, level }) {
   let [tie, setTie] = useState(0);
   let [gameover, setGameOver] = useState(false);
 
-
-  console.log(level);
-
   const result = useMemo(() => {
     setSelected(selected1++);
     setSelected2(selected2++);
