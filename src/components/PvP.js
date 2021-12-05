@@ -211,9 +211,11 @@ export default function PvP({ myChoice, level }) {
       </HStack>  
       </section>
       <section>
-        <Text fontSize='md' textAlign="center"> Player 1 select their choice then Player 2 select their choice
+      <Text fontSize='md' textAlign="center"> Player 1 select their choice then Player 2 select their choice
         <br />
-        then click 'next round' to go the next round</Text>
+        then click 'next round' to go the next round. Both players need to
+        <br />
+        make a choice, before the results are revealed.</Text>
         <Text fontSize='md' textAlign="center">{rounds}</Text>
       </section>
 

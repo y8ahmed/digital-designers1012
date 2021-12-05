@@ -213,7 +213,7 @@ export default function PvE({ myChoice, level }) {
           <section>
             <Text fontSize='md' textAlign="center">Remember to click 'play' after selecting Rock Paper or Scissor
             <br />
-            then click 'Next round' to start the second after you click 'play'</Text>
+            then click 'Next round' to start a new round, after you click 'play'.</Text>
             <Text fontSize='md' textAlign="center">{rounds}</Text>
           </section>
 
