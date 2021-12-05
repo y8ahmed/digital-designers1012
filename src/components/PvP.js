@@ -26,6 +26,7 @@ export default function PvP({ myChoice, level }) {
 
   let [selected1, setSelected] = useState(0);
   let [selected2, setSelected2] = useState(0);
+  
   let [indicator , setIndicator] = useState(0);
   let [count, setCount] = useState(0);
 
@@ -143,7 +144,6 @@ export default function PvP({ myChoice, level }) {
   }
 
   return (
-
     <Center h='100vh'>
     <VStack divider={<StackDivider borderColor='gray.200' />} spacing={4} align='stretch'>
       <section>
@@ -210,9 +210,9 @@ export default function PvP({ myChoice, level }) {
       </HStack>  
       </section>
       <section>
-        <Text fontSize='md' textAlign="center">Remember to click 'play' after selecting Rock Paper or Scissor
+        <Text fontSize='md' textAlign="center"> Player 1 select their choice then Player 2 select their choice
         <br />
-        then click 'Next round' to start the second after you click 'play'</Text>
+        then click 'next round' to go the next round</Text>
         <Text fontSize='md' textAlign="center">{rounds}</Text>
       </section>
 
