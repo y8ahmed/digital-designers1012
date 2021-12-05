@@ -1,5 +1,12 @@
 ## Team Name: Digital Designers. 
 
+## How to run project
+To run this project you need node.js and the dependencies in package.json
+1. Install packages  
+`npm i`
+2. Run project (this command runs the server and client at the same time)  
+`npm run start`
+
 ## Team Member:  
 Yusuf Ahmed, y8ahmed@my.yorku.ca, Lecture A, Lab 01.  
 Harib Shahbaz, harib327@my.yorku.ca Lecture A, Lab 01. 
