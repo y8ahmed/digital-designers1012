@@ -246,9 +246,9 @@ export default function Lucky({ myChoice, level }) {
       </HStack>  
       </section>
       <section>
-        <Text fontSize='md' textAlign="center"> Welcome to the lucky game mode! Here you test and yout
+        <Text fontSize='md' textAlign="center"> Welcome to the lucky game mode! Here you and your
         <br />
-        friend, test your luck in rock paper scissors</Text>
+        friend test your luck in rock, paper, and scissors, through random generated choices!</Text>
         <Text fontSize='md' textAlign="center">{rounds}</Text>
       </section>
 
@@ -266,4 +266,3 @@ export default function Lucky({ myChoice, level }) {
   </Center>
   );
 }
-

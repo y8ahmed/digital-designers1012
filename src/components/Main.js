@@ -77,7 +77,7 @@ export default function Main({ type, setType, level, setLevel, gameMode, setGame
                 <section>
                     <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
                         <Text fontSize='md' >Game rules:</Text>
-                        <Text fontSize='sm' >Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock, flat hand for paper, or their index and middle finger for scissors. Rock crushes scissors, scissors cut paper, and paper covers rock.</Text>
+                        <Text fontSize='sm' >Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock, flat hand for paper, or their index and middle finger for scissors. Rock crushes scissors, scissors cut paper, and paper covers rock. For each game mode, remember to click "Next Round" to move on in a game!</Text>
                     </Box>
                 </section>
             </VStack>
