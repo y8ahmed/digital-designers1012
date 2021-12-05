@@ -149,7 +149,7 @@ export default function PvE({ myChoice, level }) {
           <section>
           <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
               <Text fontSize='lg' align='center'>Round: {count}</Text>
-              <Text fontSize='md' align='center'>Player Score: {score} Computer Score: {computerScore} Tie: {tie}</Text>
+              <Text fontSize='md' align='center'>Player Score: {score} / Computer Score: {computerScore} / Tie: {tie}</Text>
           </Box>   
           </section>
           <section>
@@ -219,11 +219,11 @@ export default function PvE({ myChoice, level }) {
 
           <section>
           <VStack justifyContent="center" spacing='2%'>
-            <Text fontSize='md' textAlign="center">{result}</Text>
+          <Text fontSize='md' textAlign="center" color='tomato'>{result}</Text>
             {
-              gameover == true ? (
-                <Button align="center" onClick={reset}>Reset Game.</Button>
-              ) : null
+              gameover == true ? ( <>
+                <Button align="center" onClick={reset}><Text fontSize='md' color='tomato'>Reset Game</Text></Button>
+              </>) : null
             } 
           </VStack> 
           </section>

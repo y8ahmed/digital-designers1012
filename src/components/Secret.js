@@ -74,7 +74,7 @@ export default function Secret({ myChoice, level }) {
           return "It was a tie.";
         }
       } else {
-        setGameOver(gameover+1)
+        setGameOver(true)
         return "Game Over.";
       }
     }
@@ -152,7 +152,7 @@ export default function Secret({ myChoice, level }) {
       <section>
       <Box p={3} m={3} border="2px" borderColor="teal.500" borderRadius="5" w='xl'>
           <Text fontSize='lg' align='center'>Round: {count}</Text>
-          <Text fontSize='md' align='center'>Player 1 Score: {player1Score} Player 2 Score: {player2Score} Tie: {tie}</Text>
+          <Text fontSize='md' align='center'>Player 1 Score: {player1Score} / Player 2 Score: {player2Score} / Tie: {tie}</Text>
       </Box>   
       </section>
       <section>
@@ -213,19 +213,19 @@ export default function Secret({ myChoice, level }) {
       </HStack>  
       </section>
       <section>
-        <Text fontSize='md' textAlign="center"> Player 1 select their choice then Player 2 select their choice
+        <Text fontSize='md' textAlign="center"> Welcome to the secret game mode! Here you compete against your
         <br />
-        then click 'next round' to go the next round</Text>
+        friend, but the option you select will be swapped with the other player!</Text>
         <Text fontSize='md' textAlign="center">{rounds}</Text>
       </section>
 
       <section>
       <VStack justifyContent="center" spacing='2%'>
-        <Text fontSize='md' textAlign="center">{result}</Text>
+        <Text fontSize='md' textAlign="center" color='tomato'>{result}</Text>
         {
-          gameover == true ? (
-            <Button align="center" onClick={reset}>Reset Game.</Button>
-          ) : null
+          gameover == true ? ( <>
+            <Button align="center" onClick={reset}><Text fontSize='md' color='tomato'>Reset Game</Text></Button>
+          </>) : null
         } 
       </VStack> 
       </section>
