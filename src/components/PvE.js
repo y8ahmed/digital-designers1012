@@ -25,7 +25,7 @@ export default function PvE({ myChoice, level }) {
   let [indicator , setIndicator] = useState(0);
   let [round, setRound] = useState("");
 
-  let [count , setCount] = useState(0);
+  let [count , setCount] = useState(1);
   let [tie , setTie] = useState(0);
 
   let [gameover, setGameOver] = useState(false);
@@ -140,6 +140,7 @@ export default function PvE({ myChoice, level }) {
     setScore(0);
     setComputerScore(0);
     setRound('');
+    setCount(1);
   }
   
   return (

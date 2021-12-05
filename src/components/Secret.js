@@ -24,7 +24,7 @@ export default function Secret({ myChoice, level }) {
   let [selected2, setSelected2] = useState(0);
   
   let [indicator , setIndicator] = useState(0);
-  let [count, setCount] = useState(0);
+  let [count, setCount] = useState(1);
 
   let [tie, setTie] = useState(0);
   let [gameover, setGameOver] = useState(false);
@@ -143,6 +143,7 @@ export default function Secret({ myChoice, level }) {
     setPlayer1Score(0);
     setPlayer2Score(0);
     setRound('');
+    setCount(1);
   }
 
   return (
